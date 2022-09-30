@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $user = \App\Models\User::find(1);
+    if (!$user) {
+        $user = \App\Models\User::create([
+            'name' => 'a',
+            'email' => 'a',
+            'password' => 'a',
+        ]);
+    }
+    return $user;
 });
